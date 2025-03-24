@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dream Location</title>
+    <link rel="stylesheet" href="travel_recommendation.css" />
+  </head>
+  
+  <body>    
+    <nav class="naviBar">
+      <div class="naviLogo">
+        <img src="./assets//logo-travbloom.png" alt="TravelBloom logo" />
+        <p>TravelBloom</p>
+      </div>
+      <div class="naviLink">
+        <a href="#">Home</a>
+        <a href="./about.html">About Us</a>
+        <a href="./contact.html">Contact Us</a>
+      </div>
+      <div class="naviSearch">
+        <input
+          type="search"
+          id="searchKey"
+          placeholder="Enter a destination or keyword"
+        />
+        <button id="search-btn">Search</button>
+        <button id="reset-btn">Clear</button>
+      </div>
+    </nav>
+    
+    <main class="main-container">
+      <div class="main-content">
+        <h1>EXPLORE DREAM DESTINATION</h1>
+        <p>
+          It encourages exploration of unfamiliar 
+          territories, embracing diverse cultures and 
+          landscapes, while pursuing the desired 
+          destination that captivates the heart and 
+          ignites a sense of wonder.
+        </p>
+      </div>
+      <div id="data-container" class="data-container"></div>
+    </main>
+    <script src="travel_recommendation.js"></script>
+  </body>
+</html>
