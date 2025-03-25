@@ -1,54 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dream Destination</title>
-    <link rel="stylesheet" href="travel_recommendation.css" />
-  </head>
-  
-  <body>    
-    <nav class="naviBar">
-      <div class="naviLogo">
-        <img src="./images/plane.png" alt="TravelBloom logo" />
-        <p>TravelBloom</p>
-      </div>
-      <div class="naviLink">
-        <a href="#">Home</a>
-        <a href="./about_us.html">About Us</a>
-        <a href="./contact_us.html">Contact Us</a>
-      </div>
-      <div class="naviSearch">
-        <input
-          type="search"
-          id="searchKey"
-          placeholder="Enter a destination or keyword"
-        />
-        <button id="search-btn">Search</button>
-        <button id="reset-btn">Clear</button>
-      </div>
-    </nav>
-     
-    <main class="fix-area">
-      <div class="fix-homepage">
-        <h1>EXPLORE DREAM DESTINATION</h1>
-        <p>
-          It encourages exploration of unfamiliar 
-          territories, embracing diverse cultures and 
-          landscapes, while pursuing the desired 
-          destination that captivates the heart and 
-          ignites a sense of wonder.
-        </p>
-      </div>
 
-      <div id="data-container" class="data-container"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="travel_recommendation.css">
+    <title>Travel Bloom</title>
+</head>
 
-    </main>
-    
+<body>
     <script src="travel_recommendation.js"></script>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="images/plane.png" alt="TravelBloom Logo">
+            <h1>TravelBloom</h1>
+        </div>
+        <div class="navbar-links">
+            <a href="#">Home</a>
+            <a href="about_us.html">About Us</a>
+            <a href="contact_us.html">Contact Us</a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder='Enter "beach, temple, country"'>
+            <button type="submit" onclick="performSearch()">Search</button>
+            <button class="reset-btn" type="reset" onclick="clearData()">Clear</button>
+        </div>
+    </nav>
+    <main>
+        <div class="hero-section">
+            <div class="social-media">
+                <div class="line"></div>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
 
-  </body>
+            <div class="hero-content">
+                <h1>EXPLORE<br>DREAM<br>DESTINATION</h1>
+                <p>It encourages exploration of unfamiliar territories, embracing diverse cultures and landscapes, while
+                    pursuing the desired destination that captivates the heart and ignites a sense of wonder.</p>
+                <a href="#" class="btn">BOOK NOW</a>
+            </div>
+
+
+            <div id="search-result"></div>
+        </div>
+    </main>
+</body>
 
 </html>
-//

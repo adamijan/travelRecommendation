@@ -1,111 +1,90 @@
-async function loadData(query = '') {
-    const response = await fetch('./travel_recommendation_api.json'); 
-    const data = await response.json();
 
-    const filteredData = query ? filterData(data, query) : data;
-    displayData(filteredData);
-}
+const keywords = {
+    beach: ["beach", "beaches"],
+    temple: ["temple", "temples"],
+    country: ["country", "countries"]
+  };
 
-function filterData(data, query) {
-    query = query.toLowerCase();
-    const filteredData = {
-        countries: [],
-        temples: [],
-        beaches: []
-    };
+  async function fetchData() {
+    try {
+      const response = await fetch('travel_recommendation_api.json');
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      return null;
+    }
+  }
 
-    const categoryKeywords = {
-        countries: ["country", "countries"],
-        temples: ["temple", "temples"],
-        beaches: ["beach", "beaches"]
-    };
+  async function performSearch() {
+    const input = document.getElementById('searchInput').value.trim().toLowerCase();
+    let results = [];
 
-    let isCategoryMatch = false;
+    const apiData = await fetchData();
 
-    Object.keys(categoryKeywords).forEach(category => {
-        if (categoryKeywords[category].includes(query)) {
-            filteredData[category] = data[category];
-            isCategoryMatch = true;
-        }
-    });
-
-    if (!isCategoryMatch) {
-        data['countries'].forEach(country => {
-            if (country.name.toLowerCase().includes(query)) {
-                filteredData.countries.push(country); 
-            } else {
-                const matchingCities = country.cities.filter(city => 
-                    city.name.toLowerCase().includes(query)
-                );
-                if (matchingCities.length > 0) {
-                    filteredData.countries.push({ ...country, cities: matchingCities });
-                }
-            }
-        });
-
-        filteredData['temples'] = data['temples'].filter(temple => 
-            temple.name.toLowerCase().includes(query)
-        );
-        filteredData['beaches'] = data['beaches'].filter(beach => 
-            beach.name.toLowerCase().includes(query)
-        );
+    if (!apiData) {
+      document.getElementById('search-result').innerHTML = "Error loading data";
+      return;
     }
 
-    return filteredData;
-}
-
-function displayData(data) {
-    const container = document.getElementById('data-container');
-    container.innerHTML = '';
-
-    data['countries'].forEach(country => {
+    if(keywords.country.includes(input)){
+      apiData.countries.forEach(country => {
+        if (country.name.toLowerCase().includes(input)) {
+          results.push(`<h3>Country: ${country.name}</h3>`);
+        }
         country.cities.forEach(city => {
-            const card = createCard(city);
-            container.appendChild(card);
+            results.push(`
+              <div class="card">
+                <img src="${city.imageUrl}" alt="${city.name}" width="200">
+                <div class="card-data">
+                  <h3>${city.name}</h3>
+                  <p>${city.description}</p>
+                  <button>Visit</button>
+                </div>
+              </div>
+            `);
         });
-    });
+      });
+    }
+    else if(keywords.temple.includes(input)){
+      apiData["temples"].forEach(temple => {
+          results.push(`
+            <div class="card">
+              <img src="${temple.imageUrl}" alt="${temple.name}" width="200">
+              <div class="card-data">
+                <h3>${temple.name}</h3>
+                <p>${temple.description}</p>
+                <button>Visit</button>
+              </div>
+            </div>
+          `);
+      });
+    }
+    else if(keywords.beach.includes(input)){
+      apiData.beaches.forEach(beach => {
+          results.push(`
+            <div class="card">
+              <img src="${beach.imageUrl}" alt="${beach.name}" width="200">
+              <div class="card-data">
+                <h3>Beach: ${beach.name}</h3>
+                <p>${beach.description}</p>
+                <button>Visit</button>
+              </div>
+            </div>
+          `);
+      });
+    }
 
-    data['temples'].forEach(temple => {
-        const card = createCard(temple);
-        container.appendChild(card);
-    });
+    if (results.length > 0) {
+      document.getElementById('search-result').innerHTML = results.join('');
+    } else {
+      document.getElementById('search-result').innerHTML = "No results found for: " + input;
+    }
+  }
 
-    data['beaches'].forEach(beach => {
-        const card = createCard(beach);
-        container.appendChild(card);
-    });
+function clearData(){
+  document.getElementById('search-result').innerHTML = '';
 }
-
-document.getElementById('search-btn"').addEventListener('click', () => {
-    const query = document.getElementById('searchKey').value;
-    loadData(query);
-});
-
-document.getElementById('reset-btn').addEventListener('click', () => {
-    document.getElementById('data-container').innerHTML = '';
-    document.getElementById('searchKey').value = '';
-});
-
-function createCard(item) {
-    const card = document.createElement('div');
-    card.className = 'card';
-
-    const image = document.createElement('img');
-    image.src = item.imageUrl;
-    image.alt = `Image of ${item.name}`;
-
-    const name = document.createElement('h3');
-    name.textContent = item.name;
-
-    const description = document.createElement('p');
-    description.textContent = item.description;
-
-    card.appendChild(image);
-    card.appendChild(name);
-    card.appendChild(description);
-
-    return card;
-}
-
-
-
