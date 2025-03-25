@@ -1,0 +1,190 @@
+.homepage-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+body {
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+a:hover {
+    color: blue;
+}
+
+.naviBar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.naviLogo {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap: 20px;
+}
+
+.naviLogo img {
+    width: 70px;
+}
+
+.naviLink {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap: 20px;
+}
+
+.naviSearch input{
+    border-radius: 7px;
+}
+
+.naviSearch button{
+    width: 60px;
+    background-color: #f58637;
+    border: none;
+    border-radius: 7px;
+}
+
+
+.fix-area {
+    height:  calc(100vh - 60px);
+    background-image: url(./images/moselschleife.jpg);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.fix-homepage {
+    margin-top: 250px;
+    margin-left: 100px;
+}
+
+.fix-homepage h1 {
+    color: white;
+    font-size: 48px;
+}
+
+.fix-homepage p {
+    color: white;
+    max-width: 450px;
+    font-size: 24px;
+}
+/* travel suggestions */
+.data-container {
+    height: fit-content;
+    max-height: calc(100vh - 100px);
+    position: fixed;
+    top: 60px;
+    right: 50px;
+    overflow-y: scroll;
+    color: white;
+}
+
+.card {
+    border: 1px solid #ddd;
+    margin: 10px;
+    width: 400px;
+    border-radius: 7px;
+    color: black;
+    background-color: white;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+}
+
+.card h3,p {
+    margin-left: 10px;
+}
+
+/* definitions for the about_us html */
+.fix-about {
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.fix-about h1 {
+    color: white;
+    font-size: 48px;
+}
+
+.fix-about p {
+    color: white;
+    max-width: 800px;
+    font-size: 24px;
+}
+
+.team-area {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+
+.team-area h2 {
+    font-size: 32px;
+}
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.team-member button{
+    width: 150px;
+}
+
+
+/* contact-us html  */
+.contactUs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+}
+
+.contact-form {
+    width: 500px;
+    margin-top: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 12px;
+}
+
+.contact-form label {
+    color: white;
+    align-self: flex-start;
+    margin-left: 23px;
+}
+
+.contact-form input {
+    width: 450px;
+    height: 25px;
+}
+
+.contact-form button {
+    width: 460px;
+    height: 25px;
+    background-color: #f58637;
+}
