@@ -1,5 +1,4 @@
-/*** overall / mainpage definitions ***/
-
+/*** overall / homepage definitions ***/
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
@@ -92,12 +91,45 @@ main {
   position: relative;
 }
 
-.hero-section {
+.main-section {
   position: relative;
   display: flex;
   gap: 100px;
   height: 100vh;
 }
+
+.main-content {
+    color: white;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+    .main-content h1 {
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+    .main-content p {
+    font-size: 18px;
+    width: 450px;
+    margin-top: 20px;
+  }
+    .main-content .btn {
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #017579;
+    color: white;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+    .main-content .btn:hover {
+    background-color: #0056b3;
+  }
 
 .social-media {
   display: flex;
@@ -105,7 +137,6 @@ main {
   align-items: center;
   color: white;
 }
-
 .social-media i {
   font-size: 24px;
   margin: 15px 0;
@@ -113,51 +144,13 @@ main {
 }
 
 .social-media i:hover {
-  color: #1da1f2;
+  color: #638979;
 }
-
 .line {
   width: 2px;
   height: 200px;
   background-color: white;
   margin-bottom: 100px;
-}
-
-.hero-content {
-  color: white;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-}
-
-.hero-content h1 {
-  font-size: 60px;
-  font-weight: bold;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-
-.hero-content p {
-  font-size: 18px;
-  width: 450px;
-  margin-top: 20px;
-}
-
-.hero-content .btn {
-  margin-top: 30px;
-  padding: 10px 20px;
-  background-color: #017579;
-  color: white;
-  font-size: 13px;
-  border: none;
-  cursor: pointer;
-  border-radius: 10px;
-  text-decoration: none;
-}
-
-.hero-content .btn:hover {
-  background-color: #01595c;
 }
 
 #suggest-data {
@@ -209,25 +202,8 @@ main {
   border-top-left-radius: 5px;
 }
 
-
-
-
-/*---------------MAIN---------------*/
-
-main {
-  display: flex;
-  padding: 40px;
-}
-
-.hero-section {
-  position: relative;
-  display: flex;
-  gap: 100px;
-  height: 100vh;
-}
-
-
-.hero-content {
+/*****  our team   ******/
+.main-content-about {
   color: white;
   text-align: left;
   display: flex;
@@ -236,14 +212,14 @@ main {
   gap: 50px;
 }
 
-.about-content > h1 {
+.about-text > h1 {
   font-size: 60px;
   font-weight: bold;
   line-height: 1.2;
   text-transform: uppercase;
 }
 
-.about-content > p {
+.about-text > p {
   font-size: 14px;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.7);
@@ -252,13 +228,13 @@ main {
   background-color: rgba(0, 0, 0, 0.37);
 }
 
-.our-team {
+.team-hub {
   display: flex;
   align-items: start;
   gap: 30px;
 }
 
-.our-team > h2 {
+.team-hub > h2 {
   font-size: 50px;
   font-weight: bold;
   line-height: 1.2;
@@ -267,7 +243,7 @@ main {
   text-transform: uppercase;
 }
 
-.info-card {
+.team-card {
   font-size: 10px;
   padding: 16px;
   border-radius: 5px;
@@ -278,23 +254,22 @@ main {
   max-width: 250px;
 }
 
-.info-card > img {
+.team-card > img {
   width: 30px;
   height: 30px;
   border-radius: 10px;
 }
 
-.info-card > .details > h3 {
+.team-card > .details > h3 {
   margin-bottom: 0px;
 }
 
-.info-card > .details > h4 {
+.team-card > .details > h4 {
   color: rgba(255, 255, 255, 0.7);
   margin-top: 5px;
 }
 
-.info-card > .details > p {
-  /*background-color: rgb(46, 46, 149); */
+.team-card > .details > p {
   background-color: rgb(22, 105, 116);
   border-radius: 5px;
   padding: 7px;
@@ -309,15 +284,13 @@ main {
   color: rgba(255, 255, 255, 1);
 }
 
-
-/*contact us*/
-
+/*****  contact us   ******/
 main {
   display: flex;
   padding: 40px;
 }
 
-.hero-section {
+.main-section-contact {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -325,9 +298,7 @@ main {
   gap: 70px;
   height: 100vh;
 }
-
-
-.hero-content {
+.main-content-contact {
   color: white;
   text-align: left;
   display: flex;
@@ -335,15 +306,13 @@ main {
   align-items: start;
   justify-content: center;
 }
-
-.hero-content > h1 {
+.main-content-contact > h1 {
   font-size: 60px;
   font-weight: bold;
   line-height: 1.2;
   text-transform: uppercase;
 }
-
-.hero-content > p {
+.main-content-contact > p {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -360,7 +329,6 @@ form {
   height: min-content;
   position: relative;
 }
-
 form > input,
 form > textarea {
   margin-bottom: 10px;
@@ -372,11 +340,9 @@ form > textarea {
   border-radius: 5px;
   padding: 5px;
 }
-
 form > label {
   font-size: 13px;
 }
-
 form > button {
   width: 100%;
   padding: 5px;
@@ -386,5 +352,6 @@ form > button {
   color: white;
   font-size: 12px;
 }
-
-
+form > button:hover {
+    background-color: #0056b3;
+}
