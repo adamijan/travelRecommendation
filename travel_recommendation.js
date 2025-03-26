@@ -1,42 +1,29 @@
-
 const keywords = {
-    beach: ["beach", "beaches"],
-    temple: ["temple", "temples"],
-    country: ["country", "countries"]
+    beach: ["beach", "beaches", "BEACH"],
+    temple: ["temple", "temples", "TEMPLE"],
+    country: ["country", "countries", "COUNTRY"]
   };
 
-  async function fetchData() {
-    try {
-      const response = await fetch('travel_recommendation_api.json');
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      return null;
-    }
-  }
+  async function searchSuggests() {
 
-  async function performSearch() {
-    const input = document.getElementById('searchInput').value.trim().toLowerCase();
-    let results = [];
+    const searchword = document.getElementById('searchInput').value.trim().toLowerCase();
 
-    const apiData = await fetchData();
+    let resultArray = [];
 
-    if (!apiData) {
-      document.getElementById('search-result').innerHTML = "Error loading data";
+    const jsonData = await getJsonData();
+
+    if (!jsonData) {
+      document.getElementById('suggest-data').innerHTML = "Error loading data";
       return;
     }
 
-    if(keywords.country.includes(input)){
-      apiData.countries.forEach(country => {
-        if (country.name.toLowerCase().includes(input)) {
-          results.push(`<h3>Country: ${country.name}</h3>`);
+    if(keywords.country.includes(searchword)){
+      jsonData.countries.forEach(country => {
+        if (country.name.toLowerCase().includes(searchword)) {
+          resultArray.push(`<h3>Country: ${country.name}</h3>`);
         }
         country.cities.forEach(city => {
-            results.push(`
+            resultArray.push(`
               <div class="card">
                 <img src="${city.imageUrl}" alt="${city.name}" width="200">
                 <div class="card-data">
@@ -49,9 +36,9 @@ const keywords = {
         });
       });
     }
-    else if(keywords.temple.includes(input)){
-      apiData["temples"].forEach(temple => {
-          results.push(`
+    else if(keywords.temple.includes(searchword)){
+      jsonData.temples.forEach(temple => {
+        resultArray.push(`
             <div class="card">
               <img src="${temple.imageUrl}" alt="${temple.name}" width="200">
               <div class="card-data">
@@ -63,13 +50,13 @@ const keywords = {
           `);
       });
     }
-    else if(keywords.beach.includes(input)){
-      apiData.beaches.forEach(beach => {
-          results.push(`
+    else if(keywords.beach.includes(searchword)){
+      jsonData.beaches.forEach(beach => {
+        resultArray.push(`
             <div class="card">
               <img src="${beach.imageUrl}" alt="${beach.name}" width="200">
               <div class="card-data">
-                <h3>Beach: ${beach.name}</h3>
+                <h3>${beach.name}</h3>
                 <p>${beach.description}</p>
                 <button>Visit</button>
               </div>
@@ -78,13 +65,28 @@ const keywords = {
       });
     }
 
-    if (results.length > 0) {
-      document.getElementById('search-result').innerHTML = results.join('');
+    if (resultArray.length > 0) {
+      document.getElementById('suggest-data').innerHTML = resultArray.join('');
     } else {
-      document.getElementById('search-result').innerHTML = "No results found for: " + input;
+      document.getElementById('suggest-data').innerHTML = "No results found for: " + searchword;
     }
   }
 
-function clearData(){
-  document.getElementById('search-result').innerHTML = '';
+  async function getJsonData() {
+    try {
+      const response = await fetch('travel_recommendation_api.json');
+      if (!response.ok) {
+        throw new Error("Json API not responding");
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching data from Json file:', error);
+      return null;
+    }
+  }
+
+function clearSuggests(){
+  document.getElementById('suggest-data').innerHTML = '';
+  document.getElementById('searchInput').value = '';
 }

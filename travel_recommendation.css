@@ -1,22 +1,22 @@
+/*** overall / mainpage definitions ***/
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
   background: linear-gradient(
       to right,
-      rgba(19, 90, 100, 0.7),
-      rgba(255, 255, 255, 0)
+      rgba(19, 91, 100, 0.864),
+      rgba(255, 255, 255, 0.162)
     ),
     url("images/moselschleife.jpg") no-repeat;
   background-size: cover;
   color: white;
 }
 
-/*---------------NAVBAR---------------*/
-
-.navbar {
+/*** navigation  ***/
+.nav-bar {
   background-color: transparent;
   color: white;
   display: flex;
@@ -25,32 +25,45 @@ body {
   padding: 5px 15px;
   background-image: linear-gradient(to right, #101f21d6, #222222c7);
 }
-.navbar-logo {
+.nav-logo {
   display: flex;
   align-items: center;
 }
-.navbar-logo img {
+.nav-logo img {
   width: 40px;
   margin-right: 10px;
-  rotate: -45deg;
+  rotate: -45deg;  
 }
-.navbar a {
+.nav-bar a {
   color: white;
   text-decoration: none;
   margin: 0 15px;
   font-weight: bold;
 }
-.navbar a:hover {
-  color: #ddd;
+.nav-bar a:hover {
+  /*color: #ddd; */
+  background-color: #0056b3;
 }
-.search-container {
+.nav-bar-link {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+  }
+
+/*** search ***/  
+.hide {
+    visibility: hidden;
+}
+
+.search-hub {
   display: flex;
   align-items: center;
   padding: 10px;
   background-color: white;
-  border-radius: 50px;
+  border-radius: 10px;
 }
-.search-container input[type="text"] {
+
+.search-hub input[type="text"] {
   padding: 5px;
   border: none;
   outline: none;
@@ -59,7 +72,7 @@ body {
   width: 180px;
 }
 
-.search-container button {
+.search-hub button {
   padding: 5px 10px;
   border: none;
   background-color: #017579;
@@ -68,17 +81,9 @@ body {
   cursor: pointer;
   margin: 0px 5px;
 }
-.search-container button:hover {
+.search-hub button:hover {
   background-color: #0056b3;
 }
-.reset-btn {
-  background-color: #6c757d;
-}
-.reset-btn:hover {
-  background-color: #5a6268;
-}
-
-/*---------------MAIN---------------*/
 
 main {
   display: flex;
@@ -155,7 +160,7 @@ main {
   background-color: #01595c;
 }
 
-#search-result {
+#suggest-data {
   color: white;
   text-align: left;
   display: flex;
@@ -168,7 +173,7 @@ main {
   scrollbar-width: none;
 }
 
-#search-result > .card {
+#suggest-data> .card {
   background-color: white;
   margin-bottom: 15px;
   color: black;
@@ -197,7 +202,7 @@ main {
   }
 }
 
-#search-result > .card > img {
+#suggest-data > .card > img {
   width: 100%;
   object-fit: cover;
   border-top-right-radius: 5px;
@@ -206,57 +211,6 @@ main {
 
 
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-  background: linear-gradient(
-      to right,
-      rgba(19, 90, 100, 0.7),
-      rgba(255, 255, 255, 0)
-    ),
-    url("./images/moselschleife.jpg") no-repeat;
-  background-size: cover;
-  color: white;
-}
-
-/*---------------NAVBAR---------------*/
-
-.navbar {
-  background-color: transparent;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 15px;
-  background-image: linear-gradient(to right, #101f21d6, #222222c7);
-}
-.navbar-logo {
-  display: flex;
-  align-items: center;
-}
-.navbar-logo img {
-  width: 40px;
-  margin-right: 10px;
-  rotate: -45deg;
-}
-
-.navbar-links {
-  display: flex;
-  justify-content: center;
-  align-items: start;
-}
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
-}
-.navbar a:hover {
-  color: #ddd;
-}
 
 /*---------------MAIN---------------*/
 
@@ -272,29 +226,6 @@ main {
   height: 100vh;
 }
 
-.social-media {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-}
-
-.social-media i {
-  font-size: 24px;
-  margin: 15px 0;
-  color: white;
-}
-
-.social-media i:hover {
-  color: #1da1f2;
-}
-
-.line {
-  width: 2px;
-  height: 200px;
-  background-color: white;
-  margin-bottom: 100px;
-}
 
 .hero-content {
   color: white;
@@ -342,8 +273,9 @@ main {
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.37);
   position: relative;
-  display: flex;
+  display: grid;
   gap: 10px;
+  max-width: 250px;
 }
 
 .info-card > img {
@@ -362,11 +294,14 @@ main {
 }
 
 .info-card > .details > p {
-  background-color: rgb(46, 46, 149);
+  /*background-color: rgb(46, 46, 149); */
+  background-color: rgb(22, 105, 116);
   border-radius: 5px;
   padding: 7px;
   border: 1px solid rgba(255, 255, 255, 0.639);
   text-align: center;
+  max-width: 200px;
+  font-size: 1em;
 }
 
 .bold {
@@ -375,60 +310,7 @@ main {
 }
 
 
-
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-  background: linear-gradient(
-      to right,
-      rgba(19, 90, 100, 0.7),
-      rgba(255, 255, 255, 0)
-    ),
-    url("images/moselschleife.jpg") no-repeat;
-  background-size: cover;
-  color: white;
-}
-
-/*---------------NAVBAR---------------*/
-
-.navbar {
-  background-color: transparent;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 15px;
-  background-image: linear-gradient(to right, #101f21d6, #222222c7);
-}
-.navbar-logo {
-  display: flex;
-  align-items: center;
-}
-.navbar-logo img {
-  width: 40px;
-  margin-right: 10px;
-  rotate: -45deg;
-}
-
-.navbar-links {
-  display: flex;
-  justify-content: center;
-  align-items: start;
-}
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
-}
-.navbar a:hover {
-  color: #ddd;
-}
-
-/*---------------MAIN---------------*/
+/*contact us*/
 
 main {
   display: flex;
@@ -444,29 +326,6 @@ main {
   height: 100vh;
 }
 
-.social-media {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-}
-
-.social-media i {
-  font-size: 24px;
-  margin: 15px 0;
-  color: white;
-}
-
-.social-media i:hover {
-  color: #1da1f2;
-}
-
-.line {
-  width: 2px;
-  height: 200px;
-  background-color: white;
-  margin-bottom: 100px;
-}
 
 .hero-content {
   color: white;
@@ -507,7 +366,7 @@ form > textarea {
   margin-bottom: 10px;
   margin-top: 10px;
   margin-right: 0;
-  width: 40vw;
+  width: 30vw;
   background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.639);
   border-radius: 5px;
