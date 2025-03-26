@@ -1,12 +1,12 @@
 /*** overall / homepage definitions ***/
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: white;
   background: linear-gradient(
-      to right,
-      rgba(19, 91, 100, 0.864),
+      to bottom,
+      rgba(13, 88, 97, 0.864),
       rgba(255, 255, 255, 0.162)
     ),
     url("images/moselschleife.jpg") no-repeat;
@@ -192,6 +192,14 @@ main {
       border-radius: 5px;
       color: white;
     }
+    button:hover {
+      background-color: #0056b3;
+      border: none;
+      padding: 5px 15px;
+      border-radius: 5px;
+      color: white;
+    }
+
   }
 }
 
